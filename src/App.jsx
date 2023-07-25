@@ -24,7 +24,7 @@ function App() {
         </Col>
       </Row>
       {/* Place Filler */}
-      <Row className="" style={{ height: "700px" }}></Row>
+      <Row className="" style={{ height: "620px" }}></Row>
       {/* Taskbar */}
       <Row className="w-100 mx-auto" style={{ height: "38px" }}>
         <Taskbar />

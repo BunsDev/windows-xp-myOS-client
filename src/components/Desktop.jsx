@@ -7,11 +7,14 @@ import ConnectFour from "./applications/ConnectFour";
 import ConnectFourIcon from "./icons/ConnectFourIcon";
 import Pokedex from "./applications/Pokedex";
 import PokedexIcon from "./icons/PokedexIcon";
+import AimIcon from "./icons/AimIcon";
+import AIM from "./applications/AIM/AIM";
 
 const Desktop = () => {
   const [showCalculator, setShowCalculator] = useState(false);
   const [showConnectFour, setShowConnectFour] = useState(false);
   const [showPokedex, setShowPokedex] = useState(false);
+  const [showAim, setShowAim] = useState(false);
   return (
     <Container className="d-flex flex-column align-content-start m-0 p-0">
       {/* Desktop Icons */}
@@ -33,6 +36,11 @@ const Desktop = () => {
           <PokedexIcon setShowPokedex={setShowPokedex} />
         </Col>
       </Row>
+      <Row className="mt-3">
+        <Col xs={1}>
+          <AimIcon setShowAim={setShowAim} />
+        </Col>
+      </Row>
       {/* Applications */}
       <Calculator
         showCalculator={showCalculator}
@@ -43,6 +51,7 @@ const Desktop = () => {
         setShowConnectFour={setShowConnectFour}
       />
       <Pokedex showPokedex={showPokedex} setShowPokedex={setShowPokedex} />
+      <AIM showAim={showAim} setShowAim={setShowAim} />
     </Container>
   );
 };

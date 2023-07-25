@@ -8,10 +8,10 @@ const PokedexIcon = (props) => {
     <Draggable>
       <Container
         className="d-flex justify-content-center"
-        style={{ width: "55px", height: "80px" }}
+        style={{ width: "50px", height: "75px" }}
         onDoubleClick={() => setShowPokedex(true)}
       >
-        <img height="80px" draggable="false" src={pokedexIcon} />
+        <img height="70px" draggable="false" src={pokedexIcon} />
       </Container>
     </Draggable>
   );

@@ -20,6 +20,7 @@ const Taskbar = () => {
           style={{
             backgroundImage: `url("${blankTaskbar}")`,
             backgroundSize: "cover",
+            height: "35px",
           }}
         >
           <img

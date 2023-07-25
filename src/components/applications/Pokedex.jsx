@@ -7,7 +7,7 @@ const Pokedex = (props) => {
   return showPokedex ? (
     <Draggable
       defaultPosition={{ x: 0, y: 0 }}
-      // positionOffset={{ x: "100%", y: "-27%" }}
+      positionOffset={{ x: "100%", y: "5%" }}
     >
       <Container
         className="border border-2 rounded bg-secondary p-0 position-absolute"
