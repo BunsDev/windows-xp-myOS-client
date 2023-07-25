@@ -14,6 +14,7 @@ const Desktop = () => {
   const [showPokedex, setShowPokedex] = useState(false);
   return (
     <Container className="d-flex flex-column align-content-start m-0 p-0">
+      {/* Desktop Icons */}
       <Row className="mt-2">
         <Col xs={1}>
           <CalculatorIcon
@@ -32,6 +33,7 @@ const Desktop = () => {
           <PokedexIcon setShowPokedex={setShowPokedex} />
         </Col>
       </Row>
+      {/* Applications */}
       <Calculator
         showCalculator={showCalculator}
         setShowCalculator={setShowCalculator}

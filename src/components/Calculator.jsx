@@ -14,7 +14,9 @@ const Calculator = (props) => {
         style={{ width: "420px", height: "650px" }}
       >
         {" "}
-        <Container className="d-flex justify-content-end p-0 m-0">
+        <Container className="d-flex justify-content-between p-0 m-0">
+          <span className="px-3">Calculator</span>
+
           <button onClick={() => setShowCalculator(false)}>X</button>
         </Container>
         <iframe

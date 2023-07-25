@@ -5,13 +5,13 @@ import pokedexIcon from "/src/assets/pokedex-icon.png";
 const PokedexIcon = (props) => {
   let { setShowPokedex } = props;
   return (
-    <Draggable positionOffset={{ x: "5px", y: "-10px" }}>
+    <Draggable>
       <Container
         className="d-flex justify-content-center"
-        style={{ width: "70px", height: "60px" }}
+        style={{ width: "55px", height: "80px" }}
         onDoubleClick={() => setShowPokedex(true)}
       >
-        <img height="110px" draggable="false" src={pokedexIcon} />
+        <img height="80px" draggable="false" src={pokedexIcon} />
       </Container>
     </Draggable>
   );

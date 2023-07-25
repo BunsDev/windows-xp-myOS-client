@@ -1,7 +1,8 @@
 import "./App.css";
-import { Button, Container } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import Desktop from "./components/Desktop";
 import wallpaper from "./assets/wallpaper.png";
+import Taskbar from "./components/Taskbar";
 
 function App() {
   return (
@@ -13,9 +14,21 @@ function App() {
         height: "1000px",
         minWidth: "1600px",
         minHeight: "900px",
+        // overflow: "hidden",
       }}
     >
-      <Desktop />
+      {/* Desktop Icons */}
+      <Row>
+        <Col xs={1} className=" mx-2 " style={{ width: "90px" }}>
+          <Desktop />
+        </Col>
+      </Row>
+      {/* Place Filler */}
+      <Row className="" style={{ height: "700px" }}></Row>
+      {/* Taskbar */}
+      <Row className="w-100 mx-auto" style={{ height: "38px" }}>
+        <Taskbar />
+      </Row>
     </Container>
   );
 }
