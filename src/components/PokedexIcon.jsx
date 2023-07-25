@@ -1,6 +1,6 @@
 import Draggable from "react-draggable";
 import { Container } from "react-bootstrap";
-import pokedexIcon from "../src/assets/pokedex-icon.png";
+import pokedexIcon from "/src/assets/pokedex-icon.png";
 
 const PokedexIcon = (props) => {
   let { setShowPokedex } = props;

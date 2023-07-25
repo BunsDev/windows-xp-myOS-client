@@ -1,12 +1,12 @@
-import Desktop from "../components/Desktop";
 import "./App.css";
 import { Button, Container } from "react-bootstrap";
+import Desktop from "./components/Desktop";
 
 function App() {
   return (
     <Container
       style={{
-        backgroundImage: "url('./src/assets/wallpaper.png')",
+        backgroundImage: "url('/src/assets/wallpaper.png')",
         backgroundSize: "cover",
         width: "1600px",
         height: "1000px",

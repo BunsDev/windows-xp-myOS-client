@@ -1,6 +1,6 @@
 import Draggable from "react-draggable";
 import { Container } from "react-bootstrap";
-import gameIcon from "../src/assets/game-icon.png";
+import gameIcon from "/src/assets/game-icon.png";
 
 const ConnectFourIcon = (props) => {
   let { setShowConnectFour } = props;

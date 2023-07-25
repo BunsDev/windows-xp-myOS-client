@@ -1,6 +1,6 @@
 import Draggable from "react-draggable";
 import { Container } from "react-bootstrap";
-import calculatorIcon from "../src/assets/calculator-icon.png";
+import calculatorIcon from "/src/assets/calculator-icon.png";
 
 const CalculatorIcon = (props) => {
   let { setShowCalculator, setShowConnectFour } = props;
