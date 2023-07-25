@@ -1,12 +1,12 @@
 import { Container, Button, Row, Col } from "react-bootstrap";
-import Calculator from "./Calculator";
 import Draggable from "react-draggable";
 import { useState } from "react";
-import ConnectFour from "./ConnectFour";
-import CalculatorIcon from "./CalculatorIcon";
-import ConnectFourIcon from "./ConnectFourIcon";
-import PokedexIcon from "./PokedexIcon";
-import Pokedex from "./Pokedex";
+import Calculator from "./applications/Calculator";
+import CalculatorIcon from "./icons/CalculatorIcon";
+import ConnectFour from "./applications/ConnectFour";
+import ConnectFourIcon from "./icons/ConnectFourIcon";
+import Pokedex from "./applications/Pokedex";
+import PokedexIcon from "./icons/PokedexIcon";
 
 const Desktop = () => {
   const [showCalculator, setShowCalculator] = useState(false);

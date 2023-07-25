@@ -20,7 +20,7 @@ const ConnectFour = (props) => {
         </Container>
         <iframe
           title="mytitle"
-          src="/applications/connect-four/index.html"
+          src="/projects/connect-four/index.html"
           width="750px"
           height="780px"
         ></iframe>

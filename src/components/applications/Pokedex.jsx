@@ -20,7 +20,7 @@ const Pokedex = (props) => {
         </Container>
         <iframe
           title="mytitle"
-          src="/applications/pokedex/index.html"
+          src="/projects/pokedex/index.html"
           width="460px"
           height="900px"
         ></iframe>
