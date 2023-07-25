@@ -2,12 +2,13 @@ import { Container } from "react-bootstrap";
 import Draggable from "react-draggable";
 
 const Friends = (props) => {
+  const { setIsLoggedIn, setShowAim } = props;
   const handleLogOut = () => {
-    props.setIsLoggedIn(false);
+    setIsLoggedIn(false);
   };
 
   const handleClose = () => {
-    props.setShowAim(false);
+    setIsLoggedIn(false);
   };
   return (
     <Draggable

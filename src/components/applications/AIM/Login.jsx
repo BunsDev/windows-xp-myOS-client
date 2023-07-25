@@ -2,12 +2,14 @@ import { Container } from "react-bootstrap";
 import Draggable from "react-draggable";
 
 const Login = (props) => {
+  const { setIsLoggedIn, setShowAim } = props;
+
   const handleLogIn = () => {
-    props.setIsLoggedIn(true);
+    setIsLoggedIn(true);
   };
 
   const handleClose = () => {
-    props.setShowAim(false);
+    setShowAim(false);
   };
   return (
     <Draggable

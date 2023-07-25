@@ -8,10 +8,6 @@ const AIM = (props) => {
   const { setShowAim } = props;
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleClose = () => {
-    props.setShowAim(false);
-  };
-
   if (props.showAim) {
     return !isLoggedIn ? (
       <Login
