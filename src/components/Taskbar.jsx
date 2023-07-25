@@ -2,8 +2,15 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import start1 from "/src/assets/start1.png";
 import blankTaskbar from "/src/assets/blank-taskbar.png";
 import taskbarRight from "/src/assets/taskbar-right.png";
+import { useEffect, useState } from "react";
 
 const Taskbar = () => {
+  const [date, setDate] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => setDate(new Date()), 1000);
+  });
+
   return (
     <Container className="p-0">
       <Row>
@@ -27,7 +34,17 @@ const Taskbar = () => {
         </Col>
 
         <Col xs={2} className="p-0">
-          <img height="35px" src={taskbarRight}></img>
+          <img
+            className="img-fluid"
+            style={{ height: "35px" }}
+            src={taskbarRight}
+          />
+          <p
+            className="position-relative text-light small"
+            style={{ bottom: "28px", left: "136px" }}
+          >
+            {date.toLocaleTimeString("en-US")}
+          </p>
         </Col>
       </Row>
     </Container>
