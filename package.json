@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build --base=/public/",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "start": "serve dist -s -n -L -p $PORT"
+    "start": "serve public -s -n -L -p $PORT"
   },
   "dependencies": {
     "bootstrap": "^5.3.0",
