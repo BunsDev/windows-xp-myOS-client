@@ -9,21 +9,21 @@ import Pokedex from "./applications/Pokedex";
 import PokedexIcon from "./icons/PokedexIcon";
 import AimIcon from "./icons/AimIcon";
 import AIM from "./applications/AIM/AIM";
+import InternetExplorerIcon from "./icons/InternetExplorerIcon";
+import InternetExplorer from "./applications/InternetExplorer/InternetExplorer";
 
 const Desktop = () => {
   const [showCalculator, setShowCalculator] = useState(false);
   const [showConnectFour, setShowConnectFour] = useState(false);
   const [showPokedex, setShowPokedex] = useState(false);
   const [showAim, setShowAim] = useState(false);
+  const [showInternetExplorer, setShowInternetExplorer] = useState(false);
   return (
     <Container className="d-flex flex-column align-content-start m-0 p-0">
       {/* Desktop Icons */}
       <Row className="mt-2">
         <Col xs={1}>
-          <CalculatorIcon
-            setShowCalculator={setShowCalculator}
-            setShowConnectFour={setShowConnectFour}
-          />
+          <CalculatorIcon setShowCalculator={setShowCalculator} />
         </Col>
       </Row>
       <Row className="mt-2">
@@ -41,6 +41,13 @@ const Desktop = () => {
           <AimIcon setShowAim={setShowAim} />
         </Col>
       </Row>
+      <Row className="mt-3">
+        <Col xs={1}>
+          <InternetExplorerIcon
+            setShowInternetExplorer={setShowInternetExplorer}
+          />
+        </Col>
+      </Row>
       {/* Applications */}
       <Calculator
         showCalculator={showCalculator}
@@ -52,6 +59,10 @@ const Desktop = () => {
       />
       <Pokedex showPokedex={showPokedex} setShowPokedex={setShowPokedex} />
       <AIM showAim={showAim} setShowAim={setShowAim} />
+      <InternetExplorer
+        showInternetExplorer={showInternetExplorer}
+        setShowInternetExplorer={setShowInternetExplorer}
+      />
     </Container>
   );
 };
