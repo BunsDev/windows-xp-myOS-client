@@ -10,11 +10,11 @@ const Calculator = (props) => {
       positionOffset={{ x: "130%", y: "20%" }}
     >
       <Container
-        className="border border-2 rounded bg-secondary p-0 position-absolute"
-        style={{ width: "420px", height: "650px" }}
+        className="border border-2 rounded p-0 position-absolute"
+        style={{ width: "420px", height: "650px", backgroundColor: "#ebe9d8" }}
       >
         {" "}
-        <Container className="d-flex justify-content-between p-0 m-0">
+        <Container className="d-flex bg-dark text-light justify-content-between p-0 m-0">
           <span className="px-3">Calculator</span>
 
           <button onClick={() => setShowCalculator(false)}>X</button>

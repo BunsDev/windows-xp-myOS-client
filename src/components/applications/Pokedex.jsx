@@ -10,11 +10,16 @@ const Pokedex = (props) => {
       positionOffset={{ x: "100%", y: "5%" }}
     >
       <Container
-        className="border border-2 rounded bg-secondary p-0 position-absolute"
-        style={{ width: "510px", height: "900px", zIndex: "2" }}
+        className="border border-2 rounded p-0 position-absolute"
+        style={{
+          width: "510px",
+          height: "900px",
+          zIndex: "2",
+          backgroundColor: "#ebe9d8",
+        }}
       >
         {" "}
-        <Container className="d-flex justify-content-between p-0 m-0 position-relative">
+        <Container className="d-flex justify-content-between bg-dark text-light p-0 m-0 position-relative">
           <span className="px-3">Pokedex</span>
           <button onClick={() => setShowPokedex(false)}>X</button>
         </Container>

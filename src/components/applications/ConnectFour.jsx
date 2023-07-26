@@ -14,7 +14,7 @@ const ConnectFour = (props) => {
         style={{ width: "755px", height: "815px" }}
       >
         {" "}
-        <Container className="d-flex justify-content-between p-0">
+        <Container className="d-flex bg-dark text-light justify-content-between p-0">
           <span className="px-3">Connect Four</span>
           <button onClick={() => setShowConnectFour(false)}>X</button>
         </Container>
