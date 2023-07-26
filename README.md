@@ -1,8 +1,17 @@
-# React + Vite
+# myOS - Windows-XP Inspired Virtual Desktop Environment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![myOS Virtual Desktop](desktop_screenshot.png)
 
-Currently, two official plugins are available:
+## Introduction
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Welcome to myOS, a Windows-XP inspired virtual desktop environment! This project aims to recreate the nostalgic Windows-XP desktop experience using React, Vite, and Bootstrap. Users will be able to interact with desktop icons, open and close programs, and experience the charm of the classic Windows operating system.
+
+## Features
+
+- Windows-XP desktop user interface with interactive desktop icons.
+- Desktop icons that launch respective applications (e.g., Calculator, Pokedex, Connect Four, Internet Explorer, and AOL Instant Messenger).
+- Fully functional Calculator app.
+- Pokedex app to explore and search for Pokémon information.
+- Connect Four game to play against a friend.
+- Internet Explorer inspired application to browse the web.
+- AOL Instant Messenger inspired application for messaging with friends.
