@@ -1,6 +1,6 @@
 # myOS - Windows-XP Inspired Virtual Desktop Environment
 
-![myOS Virtual Desktop](desktop_screenshot.png)
+![myOS Virtual Desktop](https://github.com/kevinleet/myOS-client/blob/main/src/assets/readme1.png?raw=true)
 
 ## Introduction
 
