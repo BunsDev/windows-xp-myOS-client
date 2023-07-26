@@ -6,6 +6,10 @@
 
 Welcome to myOS, a Windows-XP inspired virtual desktop environment! This project aims to recreate the nostalgic Windows-XP desktop experience using React, Vite, and Bootstrap. Users will be able to interact with desktop icons, open and close programs, and experience the charm of the classic Windows operating system.
 
+## Deployment
+
+This site is currently deployed via Surge at [https://myos.surge.sh/](https://myos.surge.sh/).
+
 ## Features
 
 - Windows-XP desktop user interface with interactive desktop icons.
