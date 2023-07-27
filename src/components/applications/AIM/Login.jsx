@@ -1,24 +1,60 @@
 import { Container } from "react-bootstrap";
 import Draggable from "react-draggable";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import loginLogo from "/src/assets/login-logo2.png";
 import signon from "/src/assets/signon2.png";
 import signon2 from "/src/assets/signon3.png";
-
 import useSound from "use-sound";
 import buddyIn from "/src/assets/buddy-in.mp3";
+import inactive from "/src/assets/inactive.mp3";
 
 const Login = (props) => {
-  const { setIsLoggedIn, setShowAim } = props;
-  const [play] = useSound(buddyIn);
+  const initialValue = { screenname: "", password: "" };
+  const { setIsLoggedIn, setShowAim, users, setUsers, setUser } = props;
+  const [formState, setFormState] = useState(initialValue);
+  const [playSuccess] = useSound(buddyIn);
+  const [playFail] = useSound(inactive);
 
-  const handleLogIn = () => {
-    setIsLoggedIn(true);
-    play();
+  const handleAuth = () => {
+    let match = users.find((user) => {
+      return (
+        user.username === formState.screenname &&
+        user.password === formState.password
+      );
+    });
+    return match;
+  };
+
+  const handleLogIn = (e) => {
+    e.preventDefault();
+    let authUser = handleAuth();
+    if (authUser) {
+      setUser(authUser);
+      setIsLoggedIn(true);
+      playSuccess();
+    } else {
+      setFormState(initialValue);
+      playFail();
+    }
   };
 
   const handleClose = () => {
     setShowAim(false);
   };
+
+  const handleChange = (e) => {
+    setFormState({ ...formState, [e.target.id]: e.target.value });
+  };
+
+  useEffect(() => {
+    const getAllUsers = async () => {
+      let response = await axios.get("http://localhost:3001/api/users");
+      setUsers(response.data);
+    };
+    getAllUsers();
+  }, []);
+
   return (
     <Draggable
       defaultPosition={{ x: 0, y: 0 }}
@@ -42,9 +78,17 @@ const Login = (props) => {
         <form>
           <Container className="d-flex flex-column align-content-center align-items-center text-center mt-0">
             <p className="mb-0">ScreenName</p>
-            <input />
+            <input
+              id="screenname"
+              value={formState.screenname}
+              onChange={handleChange}
+            />
             <p className="mb-0">Password</p>
-            <input />
+            <input
+              id="password"
+              value={formState.password}
+              onChange={handleChange}
+            />
           </Container>
           <Container className="d-flex flex-row justify-content-around mt-1">
             <div>
