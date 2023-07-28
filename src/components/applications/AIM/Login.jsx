@@ -86,6 +86,7 @@ const Login = (props) => {
             <p className="mb-0">Password</p>
             <input
               id="password"
+              type="password"
               value={formState.password}
               onChange={handleChange}
             />

@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Container } from "react-bootstrap";
 import Draggable from "react-draggable";
 import { Configuration, OpenAIApi } from "openai";
 import useSound from "use-sound";
 import instantMessageSound from "/src/assets/instant-message-im.mp3";
+import chatToolbar from "/src/assets/chat-toolbar.png";
+import chatBottomBar from "/src/assets/chat-bottombar.png";
+import chatSend from "/src/assets/chat-send.png";
 
 const configuration = new Configuration({
   apiKey: "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",
@@ -12,10 +15,11 @@ delete configuration.baseOptions.headers["User-Agent"];
 const openai = new OpenAIApi(configuration);
 
 const ChatWindow = (props) => {
-  const { setShowChatWindow } = props;
+  const { setShowChatWindow, user } = props;
   const [messageInput, setMessageInput] = useState("");
   const [messages, setMessages] = useState([]);
   const [play] = useSound(instantMessageSound);
+  const bottom = useRef(null);
 
   const handleClose = () => {
     setShowChatWindow(false);
@@ -26,14 +30,20 @@ const ChatWindow = (props) => {
   };
 
   const handleSubmit = (e) => {
-    let message = messageInput;
     e.preventDefault();
-    setMessageInput("");
-    setMessages((prevMessages) => [...prevMessages, message]);
-    try {
-      runPrompt(message);
-    } catch (error) {
-      console.log(error);
+    if (messageInput.length > 0) {
+      let message = messageInput;
+      setMessageInput("");
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { user: user.username, message: message },
+      ]);
+      bottom?.current?.scrollIntoView({ behavior: "smooth" });
+      try {
+        runPrompt(message);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -41,12 +51,16 @@ const ChatWindow = (props) => {
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
       prompt: input,
+      max_tokens: 1000,
     });
+    console.log(completion.data.choices);
     let ai_response = completion.data.choices[0].text;
-    setTimeout(() => {
-      setMessages((prevMessages) => [...prevMessages, ai_response]);
-      play();
-    }, 500);
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { user: "SmarterChild", message: ai_response },
+    ]);
+    bottom?.current?.scrollIntoView({ behavior: "smooth" });
+    play();
   };
 
   return (
@@ -55,8 +69,13 @@ const ChatWindow = (props) => {
       positionOffset={{ x: "90%", y: "20%" }}
     >
       <Container
-        style={{ width: "500px", height: "400px", backgroundColor: "#ebe9d8" }}
-        className=" position-absolute"
+        style={{
+          width: "500px",
+          maxWidth: "500px",
+          height: "400px",
+          backgroundColor: "#ebe9d8",
+        }}
+        className="position-absolute"
       >
         <Container className="d-flex bg-dark text-light flex-row align-content-center justify-content-between m-0 p-0">
           <p className="px-3 m-0">SmarterChild - Instant Message</p>
@@ -70,17 +89,48 @@ const ChatWindow = (props) => {
           <button>People</button>
         </Container>
         <Container
-          style={{ minWidth: "400px", minHeight: "200px" }}
+          style={{
+            width: "480px",
+            height: "150px",
+
+            overflow: "scroll",
+          }}
           className="bg-white"
         >
-          <ul>
+          <ul className="text-start mx-0 mt-1 p-0">
             {messages.map((message) => (
-              <li>{message}</li>
+              <li style={{ listStyle: "none" }} className="p-0 m-0 fs-5">
+                <span>
+                  {message.user == "SmarterChild" ? (
+                    <span style={{ color: "blue" }}>{message.user}</span>
+                  ) : (
+                    <span style={{ color: "red" }}>{message.user}</span>
+                  )}
+                  : {message.message}
+                </span>
+              </li>
             ))}
           </ul>
+          <br />
+          <br />
+          <div ref={bottom}></div>
+        </Container>
+        <Container className="p-0 m-0">
+          <img className="w-100" src={chatToolbar} />
         </Container>
         <form onSubmit={handleSubmit}>
-          <input value={messageInput} onChange={handleChange} />
+          <textarea
+            style={{ width: "475px", height: "60px" }}
+            value={messageInput}
+            onChange={handleChange}
+          />
+          {/* <button type="submit">submit</button> */}
+          <Container className="d-flex flex-row justify-content-center align-content-start">
+            <img style={{ height: "75px" }} src={chatBottomBar} />
+            <button style={{ border: "none" }}>
+              <img style={{ height: "75px" }} src={chatSend} />
+            </button>
+          </Container>
         </form>
       </Container>
     </Draggable>

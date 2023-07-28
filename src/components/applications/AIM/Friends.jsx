@@ -70,7 +70,7 @@ const Friends = (props) => {
         </Container>
       </Draggable>
       {showChatWindow ? (
-        <ChatWindow setShowChatWindow={setShowChatWindow} />
+        <ChatWindow setShowChatWindow={setShowChatWindow} user={user} />
       ) : null}
     </>
   );

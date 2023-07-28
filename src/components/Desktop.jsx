@@ -11,6 +11,8 @@ import AimIcon from "./icons/AimIcon";
 import AIM from "./applications/AIM/AIM";
 import InternetExplorerIcon from "./icons/InternetExplorerIcon";
 import InternetExplorer from "./applications/InternetExplorer/InternetExplorer";
+import NotepadIcon from "./icons/NotepadIcon";
+import Notepad from "./applications/Notepad";
 
 const Desktop = () => {
   const [showCalculator, setShowCalculator] = useState(false);
@@ -18,6 +20,7 @@ const Desktop = () => {
   const [showPokedex, setShowPokedex] = useState(false);
   const [showAim, setShowAim] = useState(false);
   const [showInternetExplorer, setShowInternetExplorer] = useState(false);
+  const [showNotepad, setShowNotepad] = useState(false);
   return (
     <Container className="d-flex flex-column align-content-start m-0 p-0">
       {/* Desktop Icons */}
@@ -48,6 +51,12 @@ const Desktop = () => {
           />
         </Col>
       </Row>
+      <Row className="mt-3">
+        <Col xs={1}>
+          <NotepadIcon setShowNotepad={setShowNotepad} />
+        </Col>
+      </Row>
+
       {/* Applications */}
       <Calculator
         showCalculator={showCalculator}
@@ -63,6 +72,7 @@ const Desktop = () => {
         showInternetExplorer={showInternetExplorer}
         setShowInternetExplorer={setShowInternetExplorer}
       />
+      <Notepad showNotepad={showNotepad} setShowNotepad={setShowNotepad} />
     </Container>
   );
 };
