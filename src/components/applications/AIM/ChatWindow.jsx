@@ -7,12 +7,14 @@ import instantMessageSound from "/src/assets/instant-message-im.mp3";
 import chatToolbar from "/src/assets/chat-toolbar.png";
 import chatBottomBar from "/src/assets/chat-bottombar.png";
 import chatSend from "/src/assets/chat-send.png";
+import axios from "axios";
 
 const configuration = new Configuration({
-  apiKey: "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",
+  apiKey: import.meta.env.VITE_OPENAIKEY,
 });
 delete configuration.baseOptions.headers["User-Agent"];
 const openai = new OpenAIApi(configuration);
+const BASE_URL = import.meta.env.VITE_BASEURL;
 
 const ChatWindow = (props) => {
   const { setShowChatWindow, user } = props;
@@ -63,6 +65,23 @@ const ChatWindow = (props) => {
     play();
   };
 
+  const handleExportChatLog = () => {
+    const confirmResponse = confirm(
+      "Are you sure you want to export this chat log?"
+    );
+    if (confirmResponse) {
+      exportChatLog();
+    }
+  };
+
+  const exportChatLog = async () => {
+    let savedLog = await axios.post(`${BASE_URL}/logs`, {
+      content: JSON.stringify(messages),
+      userId: user.id,
+    });
+    console.log(savedLog);
+  };
+
   return (
     <Draggable
       defaultPosition={{ x: 0, y: 0 }}
@@ -87,13 +106,14 @@ const ChatWindow = (props) => {
           <button>Edit</button>
           <button>View</button>
           <button>People</button>
+          <button onClick={handleExportChatLog}>Export Chat Log</button>
         </Container>
         <Container
           style={{
             width: "480px",
             height: "150px",
-
             overflow: "scroll",
+            wordWrap: "break-word",
           }}
           className="bg-white"
         >

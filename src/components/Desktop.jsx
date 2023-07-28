@@ -13,6 +13,7 @@ import InternetExplorerIcon from "./icons/InternetExplorerIcon";
 import InternetExplorer from "./applications/InternetExplorer/InternetExplorer";
 import NotepadIcon from "./icons/NotepadIcon";
 import Notepad from "./applications/Notepad";
+import Splash from "./Splash";
 
 const Desktop = () => {
   const [showCalculator, setShowCalculator] = useState(false);
@@ -21,6 +22,7 @@ const Desktop = () => {
   const [showAim, setShowAim] = useState(false);
   const [showInternetExplorer, setShowInternetExplorer] = useState(false);
   const [showNotepad, setShowNotepad] = useState(false);
+  const [showSplash, setShowSplash] = useState(false);
   return (
     <Container className="d-flex flex-column align-content-start m-0 p-0">
       {/* Desktop Icons */}
@@ -73,6 +75,7 @@ const Desktop = () => {
         setShowInternetExplorer={setShowInternetExplorer}
       />
       <Notepad showNotepad={showNotepad} setShowNotepad={setShowNotepad} />
+      <Splash showSplash={showSplash} setShowSplash={setShowSplash} />
     </Container>
   );
 };

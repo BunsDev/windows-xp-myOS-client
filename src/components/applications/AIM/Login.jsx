@@ -9,6 +9,8 @@ import useSound from "use-sound";
 import buddyIn from "/src/assets/buddy-in.mp3";
 import inactive from "/src/assets/inactive.mp3";
 
+const BASE_URL = import.meta.env.VITE_BASEURL;
+
 const Login = (props) => {
   const initialValue = { screenname: "", password: "" };
   const { setIsLoggedIn, setShowAim, users, setUsers, setUser } = props;
@@ -49,7 +51,8 @@ const Login = (props) => {
 
   useEffect(() => {
     const getAllUsers = async () => {
-      let response = await axios.get("http://localhost:3001/api/users");
+      let response = await axios.get(`${BASE_URL}/users`);
+      console.log("getAllUsers:", response.data);
       setUsers(response.data);
     };
     getAllUsers();

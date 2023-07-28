@@ -13,9 +13,10 @@ This site is currently deployed via Surge at [https://myos.surge.sh/](https://my
 ## Features
 
 - Windows-XP desktop user interface with interactive desktop icons.
-- Desktop icons that launch respective applications (e.g., Calculator, Pokedex, Connect Four, Internet Explorer, and AOL Instant Messenger).
+- Desktop icons that launch respective applications (e.g., Calculator, Connect Four, Internet Explorer, AOL Instant Messenger, etc.).
 - Fully functional Calculator app.
 - Pokedex app to explore and search for Pokémon information.
 - Connect Four game to play against a friend.
-- Internet Explorer inspired application to browse the web.
 - AOL Instant Messenger inspired application for messaging with friends.
+- Internet Explorer inspired application to browse the web.
+- Notepad to create, save, and retrieve text files.
