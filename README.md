@@ -22,7 +22,7 @@ Check out the live demo of myOS at [https://myos.surge.sh/](https://myos.surge.s
 
 - **Connect Four Game**: Engage in a classic Connect Four game and challenge your friends for some friendly competition.
 
-- **AOL Instant Messenger with SmarterChild AI**: Chat with the legendary SmarterChild AI, now powered by the OpenAI API, and enjoy interactive and intelligent conversations reminiscent of the AOL Instant Messenger days.
+- **AOL Instant Messenger with SmarterChild AI**: Chat with the legendary SmarterChild AI, now powered by the OpenAI API, and enjoy interactive and intelligent conversations reminiscent of the AOL Instant Messenger days. Export your chat logs, access them anytime via the Notepad application.
 
 - **Internet Explorer Inspired Browser**: Experience the early internet vibes with the Internet Explorer-inspired application, where you can browse the web and explore online content.
 
@@ -31,3 +31,7 @@ Check out the live demo of myOS at [https://myos.surge.sh/](https://myos.surge.s
 ## Built by Me
 
 Everything in this virtual environment, including each application and its functionalities, has been meticulously designed and developed by me. From the user interface to the backend logic, I have put in the effort to recreate the nostalgic Windows-XP experience and ensure a seamless user experience.
+
+## Backend API
+
+The backend API for myOS is located in a separate repository at [https://github.com/kevinleet/myOS-API](https://github.com/kevinleet/myOS-API). This repository contains the server-side code responsible for handling data and supporting various functionalities in the virtual environment.
