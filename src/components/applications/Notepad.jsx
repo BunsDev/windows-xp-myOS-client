@@ -29,20 +29,15 @@ const Notepad = (props) => {
 
   const handleChange = (e) => {
     setTextAreaValue(e.target.value);
-    console.log(textareaValue);
   };
 
   const handleOpenFile = (e) => {
     const foundFile = files.find((file) => file.name == e.target.id);
-    console.log(foundFile);
-
     setCurrentFile(foundFile);
     setTextAreaValue(foundFile.content);
   };
   const handleSelect = (e) => {
     const foundLog = logs.find((log) => log.id == e.target.value);
-    console.log(e.target.value);
-    console.log(foundLog);
     const momentDate = moment(foundLog.createdAt).format(
       "YYYY-MM-DD h:mm:ss a"
     );
@@ -55,7 +50,6 @@ const Notepad = (props) => {
   const parseLogFile = (logFile) => {
     let jsonParsed = JSON.parse(logFile);
     let logOutput = "";
-    console.log(jsonParsed);
     jsonParsed.map((message) => {
       const trimmedMessage = message.message
         .trim(/\n{2}/g, "")
@@ -82,7 +76,6 @@ const Notepad = (props) => {
       const getAllLogs = async () => {
         let response = await axios.get(`${BASE_URL}/logs`);
         setLogs(response.data);
-        console.log(response);
       };
       getAllLogs();
     }

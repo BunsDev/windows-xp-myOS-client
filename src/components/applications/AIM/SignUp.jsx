@@ -19,7 +19,6 @@ const SignUp = (props) => {
       ...prevFormState,
       [e.target.id]: e.target.value,
     }));
-    console.log(formState);
   };
 
   const handleFormSubmit = (e) => {

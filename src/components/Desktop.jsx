@@ -22,7 +22,7 @@ const Desktop = () => {
   const [showAim, setShowAim] = useState(false);
   const [showInternetExplorer, setShowInternetExplorer] = useState(false);
   const [showNotepad, setShowNotepad] = useState(false);
-  const [showSplash, setShowSplash] = useState(false);
+  const [showSplash, setShowSplash] = useState(true);
   return (
     <Container className="d-flex flex-column align-content-start m-0 p-0">
       {/* Desktop Icons */}

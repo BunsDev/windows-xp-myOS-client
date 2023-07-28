@@ -56,7 +56,6 @@ const Login = (props) => {
   useEffect(() => {
     const getAllUsers = async () => {
       let response = await axios.get(`${BASE_URL}/users`);
-      console.log("getAllUsers:", response.data);
       setUsers(response.data);
     };
     getAllUsers();

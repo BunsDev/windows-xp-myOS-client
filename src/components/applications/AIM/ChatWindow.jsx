@@ -55,7 +55,6 @@ const ChatWindow = (props) => {
       prompt: input,
       max_tokens: 1000,
     });
-    console.log(completion.data.choices);
     let ai_response = completion.data.choices[0].text;
     setMessages((prevMessages) => [
       ...prevMessages,
@@ -94,7 +93,7 @@ const ChatWindow = (props) => {
           height: "400px",
           backgroundColor: "#ebe9d8",
         }}
-        className="position-absolute"
+        className="position-absolute p-0 m-0"
       >
         <Container className="d-flex bg-dark text-light flex-row align-content-center justify-content-between m-0 p-0">
           <p className="px-3 m-0">SmarterChild - Instant Message</p>
@@ -138,20 +137,22 @@ const ChatWindow = (props) => {
         <Container className="p-0 m-0">
           <img className="w-100" src={chatToolbar} />
         </Container>
-        <form onSubmit={handleSubmit}>
-          <textarea
-            style={{ width: "475px", height: "60px" }}
-            value={messageInput}
-            onChange={handleChange}
-          />
-          {/* <button type="submit">submit</button> */}
-          <Container className="d-flex flex-row justify-content-center align-content-start">
-            <img style={{ height: "75px" }} src={chatBottomBar} />
-            <button style={{ border: "none" }}>
-              <img style={{ height: "75px" }} src={chatSend} />
-            </button>
-          </Container>
-        </form>
+        <Container>
+          <form onSubmit={handleSubmit}>
+            <textarea
+              style={{ width: "475px", height: "60px" }}
+              value={messageInput}
+              onChange={handleChange}
+            />
+
+            <Container className="d-flex flex-row justify-content-center align-content-start">
+              <img style={{ height: "75px" }} src={chatBottomBar} />
+              <button style={{ border: "none" }}>
+                <img style={{ height: "75px" }} src={chatSend} />
+              </button>
+            </Container>
+          </form>
+        </Container>
       </Container>
     </Draggable>
   );
