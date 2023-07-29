@@ -14,8 +14,11 @@ import InternetExplorer from "./applications/InternetExplorer/InternetExplorer";
 import NotepadIcon from "./icons/NotepadIcon";
 import Notepad from "./applications/Notepad";
 import Splash from "./Splash";
+import SettingsIcon from "./icons/SettingsIcon";
+import Settings from "./applications/Settings/Settings";
 
-const Desktop = () => {
+const Desktop = (props) => {
+  const { wallpaper, setWallpaper } = props;
   const [showCalculator, setShowCalculator] = useState(false);
   const [showConnectFour, setShowConnectFour] = useState(false);
   const [showPokedex, setShowPokedex] = useState(false);
@@ -23,6 +26,8 @@ const Desktop = () => {
   const [showInternetExplorer, setShowInternetExplorer] = useState(false);
   const [showNotepad, setShowNotepad] = useState(false);
   const [showSplash, setShowSplash] = useState(true);
+  const [showSettings, setShowSettings] = useState(false);
+
   return (
     <Container className="d-flex flex-column align-content-start m-0 p-0">
       {/* Desktop Icons */}
@@ -58,6 +63,11 @@ const Desktop = () => {
           <NotepadIcon setShowNotepad={setShowNotepad} />
         </Col>
       </Row>
+      <Row className="mt-3">
+        <Col xs={1}>
+          <SettingsIcon setShowSettings={setShowSettings} />
+        </Col>
+      </Row>
 
       {/* Applications */}
       <Calculator
@@ -76,6 +86,12 @@ const Desktop = () => {
       />
       <Notepad showNotepad={showNotepad} setShowNotepad={setShowNotepad} />
       <Splash showSplash={showSplash} setShowSplash={setShowSplash} />
+      <Settings
+        showSettings={showSettings}
+        setShowSettings={setShowSettings}
+        wallpaper={wallpaper}
+        setWallpaper={setWallpaper}
+      />
     </Container>
   );
 };

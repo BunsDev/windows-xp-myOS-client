@@ -1,10 +1,12 @@
 import "./App.css";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import Desktop from "./components/Desktop";
-import wallpaper from "./assets/wallpaper.png";
 import Taskbar from "./components/Taskbar";
+import defaultWallpaper from "/src/assets/wallpaper.png";
+import { useState } from "react";
 
 function App() {
+  const [wallpaper, setWallpaper] = useState(defaultWallpaper);
   return (
     <Container
       style={{
@@ -20,11 +22,11 @@ function App() {
       {/* Desktop Icons */}
       <Row>
         <Col xs={1} className=" mx-2 " style={{ width: "90px" }}>
-          <Desktop />
+          <Desktop wallpaper={wallpaper} setWallpaper={setWallpaper} />
         </Col>
       </Row>
       {/* Place Filler */}
-      <Row className="" style={{ height: "448px" }}></Row>
+      <Row className="" style={{ height: "352px" }}></Row>
       {/* Taskbar */}
       <Row className="w-100 mx-auto" style={{ height: "38px" }}>
         <Taskbar />
