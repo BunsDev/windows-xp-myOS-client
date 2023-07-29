@@ -32,10 +32,14 @@ const Notepad = (props) => {
   };
 
   const handleOpenFile = (e) => {
-    const foundFile = files.find((file) => file.name == e.target.id);
-    setCurrentFile(foundFile);
-    setTextAreaValue(foundFile.content);
+    if (e.target.value) {
+      const foundFile = files.find((file) => file.name == e.target.value);
+      console.log(e.target.value);
+      setCurrentFile(foundFile);
+      setTextAreaValue(foundFile.content);
+    }
   };
+
   const handleSelect = (e) => {
     const foundLog = logs.find((log) => log.id == e.target.value);
     const momentDate = moment(foundLog.createdAt).format(
@@ -97,38 +101,44 @@ const Notepad = (props) => {
           <button onClick={handleClose}>X</button>
         </Container>
         <Container className="d-flex flex-row justify-content-between">
-          <div>
-            <button onClick={handleNewFile}>New File</button>
-            <button onClick={handleSave} className="mx-1">
-              Save
-            </button>
-          </div>
-          <div>
-            {files.length > 0 ? <span>Recent Files: </span> : null}
-            {files.map((file) => (
-              <button className="mx-1" id={file.name} onClick={handleOpenFile}>
-                {file.name}.txt
+          <Container>
+            <div className="mt-2">
+              <button onClick={handleNewFile}>New File</button>
+              <button onClick={handleSave} className="mx-1">
+                Save
               </button>
-            ))}
-          </div>
-          <div>
-            <select onChange={handleSelect}>
-              <option>Select A Chat Log</option>
+            </div>
+          </Container>
+          <Container className="d-flex flex-column" style={{ width: "250px" }}>
+            <div>
+              <select onChange={handleOpenFile}>
+                <option value="">Select A Text File</option>
+                {files.map((file) => (
+                  <option className="mx-1" value={file.name}>
+                    {file.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <select onChange={handleSelect}>
+                <option>Select A Chat Log</option>
 
-              {logs.map((log) => (
-                <option className="mx-1" id={log.id} value={log.id}>
-                  {moment(log.createdAt).format("YYYY-MM-DD h:mm:ss a")}
-                </option>
-              ))}
-            </select>
-          </div>
+                {logs.map((log) => (
+                  <option className="mx-1" id={log.id} value={log.id}>
+                    {moment(log.createdAt).format("YYYY-MM-DD h:mm:ss a")}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </Container>
         </Container>
         <Container className="mt-1">
           <textarea
             value={textareaValue}
             id={textareaValue}
             onChange={handleChange}
-            style={{ width: "570px", height: "730px" }}
+            style={{ width: "570px", height: "705px" }}
           ></textarea>
         </Container>
       </Container>
