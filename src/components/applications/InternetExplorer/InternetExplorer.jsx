@@ -3,7 +3,8 @@ import { Container } from "react-bootstrap";
 import Draggable from "react-draggable";
 
 const InternetExplorer = (props) => {
-  let { showInternetExplorer, setShowInternetExplorer } = props;
+  let { showInternetExplorer, setShowInternetExplorer, zIndex, setZIndex } =
+    props;
   let [currentURL, setCurrentURL] = useState("https://kevinli.boston/");
   let [inputValue, setInputValue] = useState(currentURL);
 
@@ -28,10 +29,18 @@ const InternetExplorer = (props) => {
     >
       <Container
         className="border border-2 rounded p-0 position-absolute"
-        style={{ width: "1204px", height: "900px", backgroundColor: "#ebe9d8" }}
+        style={{
+          width: "1204px",
+          height: "900px",
+          backgroundColor: "#ebe9d8",
+          zIndex: zIndex,
+        }}
       >
         {" "}
-        <Container className="d-flex bg-dark text-light justify-content-between p-0 m-0">
+        <Container
+          className="d-flex bg-dark text-light justify-content-between p-0 m-0"
+          onClick={() => setZIndex()}
+        >
           <span className="px-3">Internet Explorer</span>
 
           <button onClick={() => setShowInternetExplorer(false)}>X</button>

@@ -27,6 +27,25 @@ const Desktop = (props) => {
   const [showNotepad, setShowNotepad] = useState(false);
   const [showSplash, setShowSplash] = useState(true);
   const [showSettings, setShowSettings] = useState(false);
+  const [zIndices, setZIndices] = useState({
+    Calculator: 1,
+    ConnectFour: 1,
+    Pokedex: 1,
+    AIM: 1,
+    InternetExplorer: 1,
+    Notepad: 1,
+    Splash: 1,
+    Settings: 1,
+  });
+
+  const bringToFront = (componentName) => {
+    const highestZIndex = Math.max(...Object.values(zIndices));
+    const newZIndex = highestZIndex + 1;
+    setZIndices((prevZIndices) => ({
+      ...prevZIndices,
+      [componentName]: newZIndex,
+    }));
+  };
 
   return (
     <Container className="d-flex flex-column align-content-start m-0 p-0">
@@ -70,27 +89,51 @@ const Desktop = (props) => {
       </Row>
 
       {/* Applications */}
+      <Splash showSplash={showSplash} setShowSplash={setShowSplash} />
       <Calculator
         showCalculator={showCalculator}
         setShowCalculator={setShowCalculator}
+        zIndex={zIndices["Calculator"]}
+        setZIndex={() => bringToFront("Calculator")}
       />
       <ConnectFour
         showConnectFour={showConnectFour}
         setShowConnectFour={setShowConnectFour}
+        zIndex={zIndices["ConnectFour"]}
+        setZIndex={() => bringToFront("ConnectFour")}
       />
-      <Pokedex showPokedex={showPokedex} setShowPokedex={setShowPokedex} />
-      <AIM showAim={showAim} setShowAim={setShowAim} />
+      <Pokedex
+        showPokedex={showPokedex}
+        setShowPokedex={setShowPokedex}
+        zIndex={zIndices["Pokedex"]}
+        setZIndex={() => bringToFront("Pokedex")}
+      />
+      <AIM
+        showAim={showAim}
+        setShowAim={setShowAim}
+        zIndex={zIndices["AIM"]}
+        setZIndex={() => bringToFront("AIM")}
+      />
       <InternetExplorer
         showInternetExplorer={showInternetExplorer}
         setShowInternetExplorer={setShowInternetExplorer}
+        zIndex={zIndices["InternetExplorer"]}
+        setZIndex={() => bringToFront("InternetExplorer")}
       />
-      <Notepad showNotepad={showNotepad} setShowNotepad={setShowNotepad} />
-      <Splash showSplash={showSplash} setShowSplash={setShowSplash} />
+      <Notepad
+        showNotepad={showNotepad}
+        setShowNotepad={setShowNotepad}
+        zIndex={zIndices["Notepad"]}
+        setZIndex={() => bringToFront("Notepad")}
+      />
+
       <Settings
         showSettings={showSettings}
         setShowSettings={setShowSettings}
         wallpaper={wallpaper}
         setWallpaper={setWallpaper}
+        zIndex={zIndices["Settings"]}
+        setZIndex={() => bringToFront("Settings")}
       />
     </Container>
   );

@@ -2,7 +2,7 @@ import { Container } from "react-bootstrap";
 import Draggable from "react-draggable";
 
 const Pokedex = (props) => {
-  let { showPokedex, setShowPokedex } = props;
+  let { showPokedex, setShowPokedex, zIndex, setZIndex } = props;
 
   return showPokedex ? (
     <Draggable
@@ -14,12 +14,15 @@ const Pokedex = (props) => {
         style={{
           width: "510px",
           height: "900px",
-          zIndex: "2",
+          zIndex: zIndex,
           backgroundColor: "#ebe9d8",
         }}
       >
         {" "}
-        <Container className="d-flex justify-content-between bg-dark text-light p-0 m-0 position-relative">
+        <Container
+          className="d-flex justify-content-between bg-dark text-light p-0 m-0 position-relative"
+          onClick={() => setZIndex()}
+        >
           <span className="px-3">Pokedex</span>
           <button onClick={() => setShowPokedex(false)}>X</button>
         </Container>

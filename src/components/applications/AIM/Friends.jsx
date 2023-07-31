@@ -7,7 +7,7 @@ import ChatWindow from "./ChatWindow";
 import { useState } from "react";
 
 const Friends = (props) => {
-  const { setIsLoggedIn, setShowAim, user } = props;
+  const { setIsLoggedIn, setShowAim, user, zIndex, setZIndex } = props;
   const [play] = useSound(buddyOut);
   const [showChatWindow, setShowChatWindow] = useState(false);
 
@@ -35,9 +35,13 @@ const Friends = (props) => {
             height: "550px",
             width: "260px",
             backgroundColor: "#ebe9d8",
+            zIndex: zIndex,
           }}
         >
-          <Container className="d-flex bg-dark text-light flex-row align-content-center justify-content-between m-0 p-0">
+          <Container
+            className="d-flex bg-dark text-light flex-row align-content-center justify-content-between m-0 p-0"
+            onClick={() => setZIndex()}
+          >
             <p className="px-3 m-0">{user.username}'s Buddy List</p>
 
             <button onClick={handleClose}>X</button>
@@ -70,7 +74,12 @@ const Friends = (props) => {
         </Container>
       </Draggable>
       {showChatWindow ? (
-        <ChatWindow setShowChatWindow={setShowChatWindow} user={user} />
+        <ChatWindow
+          setShowChatWindow={setShowChatWindow}
+          user={user}
+          zIndex={zIndex}
+          setZIndex={setZIndex}
+        />
       ) : null}
     </>
   );

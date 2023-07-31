@@ -8,7 +8,7 @@ import { json } from "react-router-dom";
 const BASE_URL = import.meta.env.VITE_BASEURL;
 
 const Notepad = (props) => {
-  let { showNotepad, setShowNotepad } = props;
+  let { showNotepad, setShowNotepad, zIndex, setZIndex } = props;
   const initialState = { name: "Untitled Document" };
   const [files, setFiles] = useState([]);
   const [currentFile, setCurrentFile] = useState(initialState);
@@ -131,10 +131,18 @@ const Notepad = (props) => {
     >
       <Container
         className="border border-2 rounded p-0 position-absolute justify-content-center"
-        style={{ width: "600px", height: "800px", backgroundColor: "#ebe9d8" }}
+        style={{
+          width: "600px",
+          height: "800px",
+          backgroundColor: "#ebe9d8",
+          zIndex: zIndex,
+        }}
       >
         {" "}
-        <Container className="d-flex bg-dark text-light justify-content-between p-0 m-0">
+        <Container
+          className="d-flex bg-dark text-light justify-content-between p-0 m-0"
+          onClick={() => setZIndex()}
+        >
           <span className="px-3">
             Notepad - {currentFile.name || currentFile.textName}
           </span>

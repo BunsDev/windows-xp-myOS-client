@@ -4,7 +4,14 @@ import Draggable from "react-draggable";
 import Wallpaper from "./Wallpaper";
 
 const Settings = (props) => {
-  const { showSettings, setShowSettings, wallpaper, setWallpaper } = props;
+  const {
+    showSettings,
+    setShowSettings,
+    wallpaper,
+    setWallpaper,
+    zIndex,
+    setZIndex,
+  } = props;
   const [settingDisplay, setSettingDisplay] = useState("wallpaper");
 
   const handleSelect = (e) => {
@@ -23,10 +30,18 @@ const Settings = (props) => {
     >
       <Container
         className="border border-2 rounded p-0 position-absolute"
-        style={{ width: "750px", height: "650px", backgroundColor: "#ebe9d8" }}
+        style={{
+          width: "750px",
+          height: "650px",
+          backgroundColor: "#ebe9d8",
+          zIndex: zIndex,
+        }}
       >
         {" "}
-        <Container className="d-flex bg-dark text-light justify-content-between p-0 m-0">
+        <Container
+          className="d-flex bg-dark text-light justify-content-between p-0 m-0"
+          onClick={() => setZIndex()}
+        >
           <span className="px-3">Settings</span>
 
           <button onClick={handleClose}>X</button>

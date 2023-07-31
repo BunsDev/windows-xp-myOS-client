@@ -15,7 +15,15 @@ const BASE_URL = import.meta.env.VITE_BASEURL;
 
 const Login = (props) => {
   const initialValue = { screenname: "", password: "" };
-  const { setIsLoggedIn, setShowAim, users, setUsers, setUser } = props;
+  const {
+    setIsLoggedIn,
+    setShowAim,
+    users,
+    setUsers,
+    setUser,
+    zIndex,
+    setZIndex,
+  } = props;
   const [formState, setFormState] = useState(initialValue);
   const [showSignup, setShowSignup] = useState(false);
   const [signedUp, setSignedUp] = useState(false);
@@ -73,9 +81,13 @@ const Login = (props) => {
             height: "530px",
             width: "295px",
             backgroundColor: "#ebe9d8",
+            zIndex: zIndex,
           }}
         >
-          <Container className="d-flex bg-dark text-light flex-row align-content-center justify-content-between m-0 p-0">
+          <Container
+            className="d-flex bg-dark text-light flex-row align-content-center justify-content-between m-0 p-0"
+            onClick={() => setZIndex()}
+          >
             <p className="px-3 m-0">AIM - Sign On</p>
             <button onClick={handleClose}>X</button>
           </Container>

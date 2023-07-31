@@ -4,7 +4,7 @@ import Login from "./Login";
 import Friends from "./Friends";
 
 const AIM = (props) => {
-  const { setShowAim } = props;
+  const { setShowAim, zIndex, setZIndex } = props;
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState(null);
@@ -18,12 +18,16 @@ const AIM = (props) => {
         users={users}
         setUsers={setUsers}
         setUser={setUser}
+        zIndex={zIndex}
+        setZIndex={setZIndex}
       />
     ) : (
       <Friends
         setIsLoggedIn={setIsLoggedIn}
         setShowAim={setShowAim}
         user={user}
+        zIndex={zIndex}
+        setZIndex={setZIndex}
       />
     );
   }

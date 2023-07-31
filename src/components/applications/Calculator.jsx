@@ -2,7 +2,7 @@ import { Container } from "react-bootstrap";
 import Draggable from "react-draggable";
 
 const Calculator = (props) => {
-  let { showCalculator, setShowCalculator } = props;
+  let { showCalculator, setShowCalculator, zIndex, setZIndex } = props;
 
   return showCalculator ? (
     <Draggable
@@ -11,10 +11,18 @@ const Calculator = (props) => {
     >
       <Container
         className="border border-2 rounded p-0 position-absolute"
-        style={{ width: "420px", height: "650px", backgroundColor: "#ebe9d8" }}
+        style={{
+          width: "420px",
+          height: "650px",
+          backgroundColor: "#ebe9d8",
+          zIndex: zIndex,
+        }}
       >
         {" "}
-        <Container className="d-flex bg-dark text-light justify-content-between p-0 m-0">
+        <Container
+          className="d-flex bg-dark text-light justify-content-between p-0 m-0"
+          onClick={() => setZIndex()}
+        >
           <span className="px-3">Calculator</span>
 
           <button onClick={() => setShowCalculator(false)}>X</button>

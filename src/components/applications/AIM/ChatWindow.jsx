@@ -17,7 +17,7 @@ const openai = new OpenAIApi(configuration);
 const BASE_URL = import.meta.env.VITE_BASEURL;
 
 const ChatWindow = (props) => {
-  const { setShowChatWindow, user } = props;
+  const { setShowChatWindow, user, zIndex, setZIndex } = props;
   const [messageInput, setMessageInput] = useState("");
   const [messages, setMessages] = useState([]);
   const [play] = useSound(instantMessageSound);
@@ -92,10 +92,14 @@ const ChatWindow = (props) => {
           maxWidth: "500px",
           height: "400px",
           backgroundColor: "#ebe9d8",
+          zIndex: zIndex,
         }}
         className="position-absolute p-0 m-0"
       >
-        <Container className="d-flex bg-dark text-light flex-row align-content-center justify-content-between m-0 p-0">
+        <Container
+          className="d-flex bg-dark text-light flex-row align-content-center justify-content-between m-0 p-0"
+          onClick={() => setZIndex()}
+        >
           <p className="px-3 m-0">SmarterChild - Instant Message</p>
 
           <button onClick={handleClose}>X</button>
