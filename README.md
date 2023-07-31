@@ -5,7 +5,7 @@
 
 ## Introduction
 
-Welcome to myOS, a virtual desktop environment inspired by the iconic Windows XP operating system! This project aims to recreate the nostalgic Windows-XP desktop experience using modern web technologies. With the combination of React, PostgreSQL, and other powerful tools, myOS allows users to interact with desktop icons, open applications, create and save files, and relive the charm of the classic Windows OS.
+Welcome to myOS, a virtual desktop environment inspired by the iconic Windows XP operating system! This project aims to recreate the nostalgic Windows-XP desktop experience using modern web technologies. With the combination of React, PostgreSQL, OpenAI, and other powerful tools, myOS allows users to interact with desktop icons, open applications, create and save files, and relive the charm of the classic Windows OS.
 
 ## Live Demo
 
