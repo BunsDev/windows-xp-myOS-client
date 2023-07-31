@@ -25,7 +25,7 @@ const InternetExplorer = (props) => {
   return showInternetExplorer ? (
     <Draggable
       defaultPosition={{ x: 0, y: 0 }}
-      positionOffset={{ x: "15%", y: "4%" }}
+      positionOffset={{ x: "15%", y: "0%" }}
     >
       <Container
         className="border border-2 rounded p-0 position-absolute"

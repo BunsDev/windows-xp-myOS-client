@@ -8,7 +8,7 @@ const ConnectFour = (props) => {
   return showConnectFour ? (
     <Draggable
       defaultPosition={{ x: 0, y: 0 }}
-      positionOffset={{ x: "50%", y: "10%" }}
+      positionOffset={{ x: "30%", y: "0%" }}
     >
       <Container
         className="border border-2 bg-secondary p-0 position-absolute"

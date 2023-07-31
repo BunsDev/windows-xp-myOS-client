@@ -13,9 +13,9 @@ function App() {
         backgroundImage: `url(${wallpaper})`,
         backgroundSize: "cover",
         width: "1600px",
-        height: "1000px",
+        height: "940px",
         minWidth: "1600px",
-        minHeight: "900px",
+        minHeight: "940px",
         // overflow: "hidden",
       }}
     >
@@ -26,7 +26,7 @@ function App() {
         </Col>
       </Row>
       {/* Place Filler */}
-      <Row className="" style={{ height: "352px" }}></Row>
+      <Row className="" style={{ height: "292px" }}></Row>
       {/* Taskbar */}
       <Row className="w-100 mx-auto" style={{ height: "38px" }}>
         <Taskbar />
