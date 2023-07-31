@@ -31,14 +31,6 @@ Check out the live demo of myOS at [https://myos.surge.sh/](https://myos.surge.s
 
 - **Settings**: Personalize your myOS experience with the Settings section. Choose from a selection of nostalgic Windows-XP inspired wallpapers to customize your virtual desktop background.
 
-## Technologies Used
-
-The development of myOS involved the seamless integration of various modern web technologies, frameworks, and tools, including:
-
-- React
-- PostgreSQL
-- [List of other technologies used]
-
 ## Built by Me
 
 Everything in this virtual environment, including each application and its functionalities, has been meticulously designed and developed by me. From the user interface to the backend logic, I have put in the effort to recreate the nostalgic Windows-XP experience and ensure a seamless user experience.
