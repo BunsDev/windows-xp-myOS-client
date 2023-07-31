@@ -21,7 +21,7 @@ const Calculator = (props) => {
         </Container>
         <iframe
           title="mytitle"
-          src="/projects/calculator/calculator.html"
+          src="/projects/calculator/index.html"
           width="410px"
           height="615px"
         ></iframe>

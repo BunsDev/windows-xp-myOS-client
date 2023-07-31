@@ -14,17 +14,49 @@ const Notepad = (props) => {
   const [currentFile, setCurrentFile] = useState(initialState);
   const [textareaValue, setTextAreaValue] = useState("");
   const [logs, setLogs] = useState([]);
+  const [showSave, setShowSave] = useState(true);
 
   const handleSave = () => {
-    const fileName = prompt("Please enter a file name.");
-    if (fileName.length != 0) {
-      setFiles((prevFiles) => [
-        ...prevFiles,
-        { name: fileName, content: textareaValue },
-      ]);
-      setTextAreaValue("");
-      setCurrentFile(initialState);
+    if (!currentFile.id) {
+      const fileName = prompt("Please enter a file name.");
+      if (fileName.length != 0) {
+        setFiles((prevFiles) => [
+          ...prevFiles,
+          { name: fileName, content: textareaValue },
+        ]);
+        createNewText(fileName);
+        setTextAreaValue("");
+        setCurrentFile(initialState);
+      }
+    } else {
+      updateText();
+      const getAllTexts = async () => {
+        let response = await axios.get(`${BASE_URL}/texts`);
+        setFiles(response.data);
+      };
+      setTimeout(() => {
+        getAllTexts();
+      }, 2);
     }
+  };
+
+  const updateText = async () => {
+    let updatedText = await axios.put(`${BASE_URL}/texts`, {
+      id: currentFile.id,
+      content: textareaValue,
+    });
+  };
+
+  const createNewText = async (fileName) => {
+    let newText = await axios.post(`${BASE_URL}/texts`, {
+      textName: fileName + ".txt",
+      content: textareaValue,
+    });
+    const getAllTexts = async () => {
+      let response = await axios.get(`${BASE_URL}/texts`);
+      setFiles(response.data);
+    };
+    getAllTexts();
   };
 
   const handleChange = (e) => {
@@ -33,10 +65,10 @@ const Notepad = (props) => {
 
   const handleOpenFile = (e) => {
     if (e.target.value) {
-      const foundFile = files.find((file) => file.name == e.target.value);
-      console.log(e.target.value);
+      const foundFile = files.find((file) => file.textName == e.target.value);
       setCurrentFile(foundFile);
       setTextAreaValue(foundFile.content);
+      setShowSave(true);
     }
   };
 
@@ -48,6 +80,7 @@ const Notepad = (props) => {
     const parsedLog = parseLogFile(foundLog.content);
     setTextAreaValue(parsedLog);
     setCurrentFile({ name: momentDate });
+    setShowSave(false);
     // setTextAreaValue(logMessages.map((message) => message.user));
   };
 
@@ -67,6 +100,7 @@ const Notepad = (props) => {
   const handleNewFile = () => {
     setCurrentFile(initialState);
     setTextAreaValue("");
+    setShowSave(true);
   };
 
   const handleClose = () => {
@@ -81,7 +115,12 @@ const Notepad = (props) => {
         let response = await axios.get(`${BASE_URL}/logs`);
         setLogs(response.data);
       };
+      const getAllTexts = async () => {
+        let response = await axios.get(`${BASE_URL}/texts`);
+        setFiles(response.data);
+      };
       getAllLogs();
+      getAllTexts();
     }
   }, [showNotepad]);
 
@@ -96,7 +135,9 @@ const Notepad = (props) => {
       >
         {" "}
         <Container className="d-flex bg-dark text-light justify-content-between p-0 m-0">
-          <span className="px-3">Notepad - {currentFile.name}.txt</span>
+          <span className="px-3">
+            Notepad - {currentFile.name || currentFile.textName}
+          </span>
 
           <button onClick={handleClose}>X</button>
         </Container>
@@ -104,9 +145,11 @@ const Notepad = (props) => {
           <Container>
             <div className="mt-2">
               <button onClick={handleNewFile}>New File</button>
-              <button onClick={handleSave} className="mx-1">
-                Save
-              </button>
+              {showSave ? (
+                <button onClick={handleSave} className="mx-1">
+                  Save
+                </button>
+              ) : null}
             </div>
           </Container>
           <Container className="d-flex flex-column" style={{ width: "250px" }}>
@@ -114,8 +157,8 @@ const Notepad = (props) => {
               <select onChange={handleOpenFile}>
                 <option value="">Select A Text File</option>
                 {files.map((file) => (
-                  <option className="mx-1" value={file.name}>
-                    {file.name}
+                  <option className="mx-1" value={file.textName}>
+                    {file.textName}
                   </option>
                 ))}
               </select>

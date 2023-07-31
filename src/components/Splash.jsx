@@ -14,7 +14,7 @@ const Splash = (props) => {
       positionOffset={{ x: "290%", y: "3%" }}
     >
       <Container
-        style={{ width: "400px", height: "340px", backgroundColor: "#ebe9d8" }}
+        style={{ width: "400px", height: "450px", backgroundColor: "#ebe9d8" }}
         className="position-absolute p-0 m-0"
       >
         <Container className="d-flex bg-dark text-light justify-content-between p-0 m-0">
@@ -41,7 +41,20 @@ const Splash = (props) => {
                 <li>Access other webpages using address bar</li>
               </ul>
             </li>
-            <li>Notepad - Retrieval of files from SQL API</li>
+            <li>
+              Notepad
+              <ul>
+                <li>
+                  Create and edit files fetched from the PostgreSQL API backend
+                </li>
+              </ul>
+            </li>
+            <li>
+              Settings
+              <ul>
+                <li>Customize your desktop by choosing a new wallpaper</li>
+              </ul>
+            </li>
           </ul>
           <h4 className="text-center">
             Developed By:{" "}

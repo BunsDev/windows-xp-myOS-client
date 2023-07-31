@@ -101,10 +101,10 @@ const ChatWindow = (props) => {
           <button onClick={handleClose}>X</button>
         </Container>
         <Container className="my-1">
-          <button>File</button>
-          <button>Edit</button>
-          <button>View</button>
-          <button>People</button>
+          <button disabled>File</button>
+          <button disabled>Edit</button>
+          <button disabled>View</button>
+          <button disabled>People</button>
           <button onClick={handleExportChatLog}>Export Chat Log</button>
         </Container>
         <Container

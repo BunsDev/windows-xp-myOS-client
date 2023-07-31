@@ -42,7 +42,7 @@ const Settings = (props) => {
               </button>
             </li>
             <li className="mx-2">
-              <button>Files</button>
+              <button disabled>Files</button>
             </li>
           </ul>
         </Container>
