@@ -26,7 +26,7 @@ const Taskbar = () => {
           <img
             height="35px"
             src={start1}
-            onClick={() => alert("start button pressed")}
+            // onClick={() => alert("start button pressed")}
           />
         </Col>
         <Col className="p-0 w-100">
