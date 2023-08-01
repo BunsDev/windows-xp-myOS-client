@@ -110,6 +110,7 @@ const Notepad = (props) => {
     setShowNotepad(false);
     setTextAreaValue("");
     setCurrentFile(initialState);
+    setShowDelete(false);
   };
 
   const handleDelete = () => {
