@@ -15,6 +15,7 @@ const Notepad = (props) => {
   const [textareaValue, setTextAreaValue] = useState("");
   const [logs, setLogs] = useState([]);
   const [showSave, setShowSave] = useState(true);
+  const [showDelete, setShowDelete] = useState(false);
 
   const handleSave = () => {
     if (!currentFile.id) {
@@ -69,6 +70,7 @@ const Notepad = (props) => {
       setCurrentFile(foundFile);
       setTextAreaValue(foundFile.content);
       setShowSave(true);
+      setShowDelete(true);
     }
   };
 
@@ -81,6 +83,7 @@ const Notepad = (props) => {
     setTextAreaValue(parsedLog);
     setCurrentFile({ name: momentDate });
     setShowSave(false);
+    setShowDelete(false);
     // setTextAreaValue(logMessages.map((message) => message.user));
   };
 
@@ -107,6 +110,31 @@ const Notepad = (props) => {
     setShowNotepad(false);
     setTextAreaValue("");
     setCurrentFile(initialState);
+  };
+
+  const handleDelete = () => {
+    const deleteText = async () => {
+      try {
+        let deletedText = await axios.delete(`${BASE_URL}/texts`, {
+          data: { id: currentFile.id },
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    deleteText();
+    setCurrentFile(initialState);
+    setTextAreaValue("");
+    setShowSave(true);
+    setShowDelete(false);
+    const getAllTexts = async () => {
+      let response = await axios.get(`${BASE_URL}/texts`);
+      setFiles(response.data);
+      console.log(files);
+    };
+    setTimeout(() => {
+      getAllTexts();
+    }, 2);
   };
 
   useEffect(() => {
@@ -156,6 +184,11 @@ const Notepad = (props) => {
               {showSave ? (
                 <button onClick={handleSave} className="mx-1">
                   Save
+                </button>
+              ) : null}
+              {showDelete ? (
+                <button onClick={handleDelete} className="mx-1">
+                  Delete
                 </button>
               ) : null}
             </div>

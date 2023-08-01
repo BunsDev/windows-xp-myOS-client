@@ -16,7 +16,6 @@ function App() {
         height: "940px",
         minWidth: "1600px",
         minHeight: "940px",
-        // overflow: "hidden",
       }}
     >
       {/* Desktop Icons */}
